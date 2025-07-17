@@ -18,5 +18,9 @@ def step0():
 def step1():
     return render_template('lstm/step1.html')
 
+@app.route('/lstm/step2')
+def step2():
+    return render_template('lstm/step2.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
