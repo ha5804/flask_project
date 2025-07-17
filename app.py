@@ -10,6 +10,10 @@ def home():
 def learn():
     return render_template('lstm/index.html')
 
+@app.route('/lstm/step0')
+def step0():
+    return render_template('lstm/step0.html')
+
 @app.route('/lstm/step1')
 def step1():
     return render_template('lstm/step1.html')

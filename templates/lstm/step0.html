@@ -2,11 +2,36 @@
 <html>
 <head>
     <title>시작 - LSTM은 무엇인가?</title>
+    <!-- 부트스트랩 적용 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h2>LSTM 설명</h2>
-    <p>
-        LSTM
-    </p>
+<body class="container mt-5">
+
+    <div class="card shadow p-4">
+        <h2 class="mb-3">🧠 LSTM이란 무엇인가?</h2>
+        <p>
+            LSTM(Long Short-Term Memory)은 <strong>시간에 따른 데이터의 변화를 예측</strong>하는 데 사용되는 딥러닝 모델입니다.
+            이러한 시간 기반 데이터를 흔히 <mark><strong>시계열 데이터</strong></mark>라고 부르며,
+            예를 들어 <em>주가, 날씨, 환율, 센서 데이터</em> 등이 여기에 해당합니다.
+        </p>
+        <p>
+            이 웹사이트에서는 LSTM 모델의 작동 원리를 <strong>단계별로 학습</strong>하고,
+            직접 데이터를 넣어 예측까지 실습할 수 있습니다.
+        </p>
+    </div>
+
+    <div class="card shadow p-4">
+        <h2 class="mb-3">준비과정</h2>
+        <p>
+            LSTM을 제외한 다른 머신러닝 모델들은 기본적으로 <strong>숫자를 기반으로</strong> 작동합니다.
+            그에 따라 LSTM을 활용하기 위해 데이터를 처리하는 단계를 거쳐야 합니다.
+            데이터 처리과정을 알아보기 위해 아래 버튼을 클릭해주세요 ^o^
+        </p>
+    </div>
+
 </body>
+    <h2>데이터 처리</h2>
+    <form action="/lstm/step1">
+        <button type="submit">1단계: 데이터 처리 알아보기</button>
+    </form>
 </html>
