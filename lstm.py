@@ -20,4 +20,7 @@ class lstm:
         #cell candidate
         self.w_c = np.random.randn(hidden_size, concat_size)
         self.b_c = np.zeros((hidden_size, 1))
-
+\
+    def sigmoid(self, x):
+        return 1 / (1 + np.exp(-x))
+    

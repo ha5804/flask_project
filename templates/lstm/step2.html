@@ -5,41 +5,84 @@
     <!-- 부트스트랩 적용 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<div class="card shadow p-4">
+    <h2 class="mb-3">LSTM</h2>
+    <p>
+        LSTM은 RNN의 기억 망각 문제를 해결하기 위해 나온 모델입니다.<br>
+        따라서 LSTM에는 게이트 라는 개념을 도입합니다.<br>
+        주로 시계열 데이터를 다루기 때문에 t는 시점으로 알고 보시면 이해하기 편합니다!<br>
+        (t = 현재시점, t-1 = 이전시점)<br>
+    </p>
+</div>
+
 <body class="container mt-5">
-
     <div class="card shadow p-4">
-        <h2 class="mb-3">(1) LSTM의 게이트 </h2>
+        <h2 class="mb-3">LSTM의 게이트</h2>
         <p>
-            lstm에는 총 4개의 게이트가 존재합니다.<br>
+            LSTM을 이해하기 앞서 게이트에 대해 설명하겠습니다.
+            LSTM에는 총 4개의 게이트가 존재합니다.<br>
+            각 게이트는 고유의 가중치와 절편(편향)을 보유하여 연산을 수행합니다.<br>
+            <br>            
             RNN의 기억 잃는 문제를 해결하기 위해 만들어진 lstm은 위 4개의 게이트를 통해 정보를 기억합니다!<br>
+            우선 각 게이트의 수식과 활성화 함수에 대해 설명하고 자세한 설명은 다시 하도록 하겠습니다.<br>
             (1)망각 게이트: 활성화 함수는 sigmoid 함수입니다. 기호는 f_t 라고 작성하겠습니다.<br>
-                - fₜ = σ(W_f · [hₜ₋₁, xₜ] + b_f) <br>
+                - <mark><strong>fₜ = σ(W_f · [hₜ₋₁, xₜ] + b_f) </strong></mark><br>
             (2)입력 게이트: 활성화 함수는 sigmoid 함수입니다. 기호는 i_t 라고 작성하겠습니다.<br>
-                - iₜ = σ(W_i · [hₜ₋₁, xₜ] + b_i) <br>
+                - <mark><strong>iₜ = σ(W_i · [hₜ₋₁, xₜ] + b_i)</strong> </mark><br>
             (3)셀 후보값: 활성화 함수는 tanh 함수입니다. 기호는 c_hat_t 라고 작성하겠습니다.<br>
-                - ĉₜ = tanh(W_c · [hₜ₋₁, xₜ] + b_c) <br>
+                - <mark><strong>ĉₜ = tanh(W_c · [hₜ₋₁, xₜ] + b_c)</strong> </mark><br>
             (4)출력 게이트: 활성화 함수는 sigmoid 함수입니다. 기호는 o_t 라고 작성하겠습니다.<br>
-                - oₜ = σ(W_o · [hₜ₋₁, xₜ] + b_o) <br>
-            <strong>[h_t 에 대해서는 다음 장의 변수 설명시 같이 설명하겠습니다!]</strong><br>
-
-            각 게이트는 <br>
-            -> 과거 기억을 잊을지 결정 <br>
-            -> 새로운 정보를 기억할지 결정 <br>
-            -> 새로 들어올 기억에 대한 계산 <br>
-            -> 현시점 출력을 얼마나 보낼지 결정 <br>
-
-            위의 게이트를 데이터가 통과하면서 각 수식에 대입되어 중요한 정보는 기억되어 사용됩니다.<br>
+                - <mark><strong>oₜ = σ(W_o · [hₜ₋₁, xₜ] + b_o)</strong></mark><br>
+        </p>
+        <p>
+            (1)망각 게이트 <br>
+                - 사용되는 변수와 함수 : W_f, [hₜ₋₁, xₜ], b_f, sigmoid()<br>
+                - 출력 결과 : forget ~ f_t <br>
+                - 의미 : <strong>과거</strong> 데이터에 대해 이전 은닉층의 결과 hₜ₋₁을 이용해 <br>
+                        sigmoid 함수를 통해 0~1 사이의 결과로<br>
+                        어떤 데이터를 망각할지 결정합니다.<br>
+            (2)입력 게이트 <br>
+                - 사용되는 변수와 함수 : W_i, [hₜ₋₁, xₜ], b_i, sigmoid()<br>
+                - 출력 결과 : input ~ i_t <br>
+                - 의미 : <strong>현재</strong> 데이터에 대해 이전 은닉층의 결과 hₜ₋₁을 이용해 <br>
+                        sigmoid 함수를 통해 0~1 사이의 결과로<br>
+                        어떤 데이터를 기억할지 결정합니다.<br>
+            (3)셀 후보 결정 <br>
+                - 사용되는 변수와 함수 : W_c, [hₜ₋₁, xₜ], b_c, tanh()<br>
+                - 출력 결과 : cell candidate ~ c_hat_t <br>
+                - 의미 : <strong>현재</strong> 데이터에 대해 이전 은닉층의 결과 hₜ₋₁을 이용해 <br>
+                        tanh 함수를 통해 cell에 저장할 정보를 결정합니다. <br>
+            (4)출력 게이트 <br>
+                - 사용되는 변수와 함수 : W_o, [hₜ₋₁, xₜ], b_o, sigmoid()<br>
+                - 출력 결과 : output ~ o_t <br>
+                - 의미 : <strong>현재</strong> 데이터에 대해 이전 은닉층의 결과 hₜ₋₁을 이용해 <br>
+                        sigmoid 함수를 통해 출력할 정보를 결정합니다. <br>
+        </p>
+        <p>
+            게이트는 이렇게 4가지가 존재하고, 위 게이트들의 각 결과값을 이용합니다.<br>
         </p>
     </div>
 
     <div class="card shadow p-4">
-        <h2 class="mb-3">(2)LSTM 에서 마주하게될 변수</h2>
+        <h2 class="mb-3">hₜ 와 cₜ</h2>
         <p>
-            다음으로 lstm에 이용될 가중치와 편향들에 대해 알아보겠습니다.<br>
-            (1)W_f , W_i, W_o, W_c<br>
-            (2)b_f, b_i, b_o, b_c<br>
-            W는 각 게이트에 대한 가중치를 의미합니다.<br>
-            b는 각 게이트에 대한 절편을 의미합니다.<br>
+            각 gate를 통과하여 저장된 결과를 어떻게 이용할까요?
+        </p>
+        <p>
+            cₜ 는 현 시점에 기억된 cell 정보들입니다.<br>
+            게이트를 통해 정보를 1차 필터링 하였다면, 다시 저장할 정보를 현시점 기준으로 업데이트 해야합니다. <br>
+
+            cₜ = (fₜ * c_prev) + (i_t * c_t_hat)<br>
+            위 수식은 이전 셀에 저장된 데이터를 현시점 망각 게이트를 통과시키고,<br>
+            저장할 후보들을 입력 게이트에 통과시켜 기억할것들을 더해<br>
+            현 시점에 저장할 cell에 저장합니다. <br>
+            
+            이때 은닉충 hₜ는 cₜ 에 저장된 결과를 요약한 결과가 됩니다. <br>
+            h_t = σ(W_o · [hₜ₋₁, xₜ] + b_o) * np.tanh(c_t) <br>
+            위 수식은 출력 게이트에 현재 저장된 정보를 곱하여 출력 정보를 결정합니다.<br>
+            
+            c_t와 h_t의 차이를 많이 헷갈려 하는데, c_t는 저장된 정보들.<br>
+            h_t는 저장된 정보들중 정말 중요한 정보들 이라고 생각하면 좋습니다!<br>
         </p>
     </div>
 
