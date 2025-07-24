@@ -11,8 +11,8 @@ def home():
 def input_balance():
     balance = request.form["balance"]
     # balance는 문자열
-    balance = float(balance)
-    return f"입력하신 잔고는 {balance}원 입니다."
+    return render_template("step1.html", balance = balance) 
+    # reder_template으로 홈페이지를 연결하고, balance 값을 전달한다.
 
 if __name__ == '__main__':
     app.run(debug=True)
