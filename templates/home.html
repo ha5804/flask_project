@@ -5,9 +5,16 @@
     <title>홈페이지</title>
 </head>
 <body>
-    <a href="/register">
-        <button>회원가입</button>
-      </a>
+    <h1>머신러닝 학습 사이트</h1>
+
+    {% if username %}
+    <p>환영합니다, {{ username }}님!</p>
+    <a href="/logout">로그아웃</a>
+    {% else %}
+    <a href="/login"><button>로그인</button></a>
+    <a href="/register"><button>회원가입</button></a>
+    {% endif %}
+
 </body>
 </html>
 
