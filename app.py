@@ -1,21 +1,26 @@
-from flask import Flask, render_template, request
+# square.py
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template("home.html")
 
-@app.route('/balance/', methods =["POST"])
-# POST, GET, PUT, DELETE는 대문자로 정의
-def input_balance():
-    balance = request.form["balance"]
-    # balance는 문자열
-    return render_template("index.html", balance = balance) 
-    # reder_template으로 홈페이지를 연결하고, balance 값을 전달한다.
+@app.route('/register', methods = ["GET"])
+def register():
+    return render_template("register.html")
 
-@app.route('/step1/')
-def step1():
-    return render_template("step1.html")
+@app.route('/register', methods=['POST'])
+def register_post():
+    username = request.form['username']
+    password = request.form['password']
+    
+    # 아직은 DB 없이 단순 출력만
+    print(f"가입한 사용자: {username}, 비밀번호: {password}")
+
+    return redirect('/')
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug = True)
+
