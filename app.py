@@ -16,7 +16,8 @@ with app.app_context():
 
 @app.route('/')
 def home():
-    return render_template("home.html")
+    username = session.get('username')
+    return render_template("home.html", username = username)
 
 @app.route('/register', methods = ["GET", "POST"])
 def register():
