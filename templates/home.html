@@ -1,21 +1,12 @@
-<!-- templates/home.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>홈페이지</title>
-    <link rel = "stylesheet" href="{{url_for('static', filename = 'style.css')}}">
-</head>
-<body>
-    <h1>climing</h1>
+<!-- templates/index.html -->
+{% extends "base.html" %}
 
-    {% if username %}
-    <p>환영합니다, {{ username }}님!</p>
-    <a href="/logout">로그아웃</a>
-    {% else %}
-    <a href="/login"><button>로그인</button></a>
-    <a href="/register"><button>회원가입</button></a>
-    {% endif %}
+{% block title %}홈{% endblock %}
 
-</body>
-</html>
-
+{% block content %}
+    <div class="hero">
+        <h1>환영합니다!</h1>
+        <p>클라이머를 위한 웹사이트입니다.</p>
+    이곳에서 다양한 정보를 얻고 같이 활동하세요!</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}홈페이지{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+    <!-- 🧭 네비게이션 바 -->
+    <nav class="navbar">
+        <div class="logo">Climing</div>
+        <div class="nav-links">
+            <a href="/">홈</a>
+            <a href="/login">로그인</a>
+            <a href="/signup">회원가입</a>
+        </div>
+    </nav>
+
+    <!-- 📦 본문 콘텐츠 -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- 🧱 푸터 -->
+    <footer class="footer">
+        &copy; 2025 MySite. All rights reserved.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+/* static/style.css */
+
+/* 기본 설정 */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* 네비게이션 바 */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 16px;
+}
+
+.navbar .nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* 메인 콘텐츠 */
+.content {
+    padding: 40px;
+    text-align: center;
+}
+
+.hero {
+    background-color: #f0f0f0;
+    padding: 60px 20px;
+    border-radius: 8px;
+}
+
+/* 푸터 */
+.footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
