@@ -1,0 +1,52 @@
+/* 📌 전체 배경 및 폰트 설정 */
+body {
+    background-color: #eef1f5; /* 아주 연한 회색 배경 */
+    font-family: 'Segoe UI', sans-serif; /* 깔끔한 시스템 글꼴 */
+    display: flex; /* 중앙 정렬을 위한 flex 사용 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    height: 100vh; /* 화면 전체 높이 기준 정렬 */
+}
+
+/* 📌 로그인 박스 디자인 */
+.login-container {
+    background-color: white; /* 로그인창 배경 흰색 */
+    padding: 40px 30px; /* 상하좌우 여백 */
+    border-radius: 12px; /* 모서리를 둥글게 */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* 약간의 그림자 효과 */
+    width: 320px; /* 고정 너비 */
+}
+
+/* 📌 로그인 제목 스타일 */
+.login-container h2 {
+    margin-bottom: 24px;
+    text-align: center;
+    color: #333; /* 짙은 회색 */
+}
+
+/* 📌 입력창 스타일 (아이디, 비밀번호) */
+input[type="text"],
+input[type="password"] {
+    width: 100%; /* 가로 너비 꽉 채우기 */
+    padding: 20px; /* 내부 여백 */
+    margin: 8px 0 16px 0; /* 입력창 간 여백 위 오른 아래 왼쪽 */
+    border: 1px solid #ccc; /* 테두리 연회색 */
+    border-radius: 8px; /* 둥근 모서리 */
+    box-sizing: border-box; /* padding 포함한 전체 너비 계산 로그인 박스 안튀어나오게. */
+}
+
+button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer; /* 마우스를 가져가면 손가락 모양 */
+    font-weight: bold;
+}
+
+/* 📌 버튼에 마우스를 올렸을 때 효과 색이 살짝 바뀜*/
+button:hover {
+    background-color: #45a049;
+}

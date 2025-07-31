@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>회원가입</title>
+    <title>로그인</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 </head>
 <body>
-    <h2>로그인</h2>
-    <form method="POST">
-    <label>아이디:</label><br>
-    <input type="text" name="username" required><br>
-    <label>비밀번호:</label><br>
-    <input type="password" name="password" required><br>
-    <button type="submit">로그인</button>
-    </form>
-    
-  </form>
+    <div class="login-container">
+        <h2>로그인</h2>
+        <form method="POST" action="/login">
+            <input type="text" name="username" placeholder="아이디" required>
+            <input type="password" name="password" placeholder="비밀번호" required>
+            <!-- plceholder 은 박스 안에 아무 입력 없을때 흐릿하게 보이는 것 -->
+            <button type="submit">로그인</button>
+        </form>
+    </div>
 </body>
 </html>
+ 
