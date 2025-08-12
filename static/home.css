@@ -49,4 +49,46 @@ body {
     width: 100%;
 }
 
+/* 암장 섹션 스타일 */
+.gym-section {
+    padding: 40px;
+    background-color: #fafafa;
+}
+
+.gym-section h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #333;
+}
+
+.gym-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.gym-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 280px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.gym-card:hover {
+    transform: translateY(-4px);
+}
+
+.gym-card h3 {
+    margin-bottom: 8px;
+    color: #007bff;
+}
+
+.gym-card p {
+    font-size: 14px;
+    color: #666;
+}
 
